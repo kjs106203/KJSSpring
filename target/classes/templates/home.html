@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Spring 실습중</h1>
+<h2>현재 제목</h2>
+저는 김지성입니다
+
+<form method="POST" th:action="@{/}" th:object="${user}"><input type="text" th:field="*{name}">
+    <input type="number" th:field="*{age}">
+    <input type="checkbox" th:field="*{sex}">
+    <input type="text" th:field="*{address}">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
