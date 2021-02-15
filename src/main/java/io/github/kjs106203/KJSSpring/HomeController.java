@@ -3,9 +3,12 @@ package io.github.kjs106203.KJSSpring;
 import lombok.Data;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -29,14 +32,20 @@ public class HomeController {
 
     @GetMapping ("/idduplicate")
     public String idduplicate() {
-        return "idduplicate";
+        return "idduplicate"; //Spring에서는 return에 ""을 붙이면 templates의 파일로 인식
     }
 
     @PostMapping("/")
-    public String getUserData(User user) {
-        System.out.println(user);
+    public String getUserData(@Valid User user, Errors errors) { //@Valid가 붙었기 때문에 User는 유효성 검사를 하고 유효성 검사 결과가 만족되지 않으면 Error 출력
+        if(errors.hasErrors()) {
+            return "home"; //Spring에서는 return에 ""을 붙이면 templates의 파일로 인식
+        }
+
 
         Optional result = userRepository.findById(user.getId()); //lombok이 getId를 만들어줌
+        List res = userRepository.findByName("jiseong");
+
+        System.out.println(res);
 
         if(result == Optional.empty()) {
             userRepository.save(user);

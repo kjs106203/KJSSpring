@@ -37,6 +37,10 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId> <!--스프링에서 데이터처리를 위한 데이터 클래스 내부 getter setter 기능 지원 -->
             <optional>true</optional>

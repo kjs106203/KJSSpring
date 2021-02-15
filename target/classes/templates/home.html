@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/error.css">
 </head>
 <body>
 <h1>Spring 실습중</h1>
@@ -12,14 +13,17 @@
 <form method="POST" th:action="@{/}" th:object="${user}">
     <label>ID</label>
     <input type="text" th:field="*{id}">
+    <span class="error" th:if-="${#fields.hasErrors('id')}" th:errors="*{id}"></span> <!--id에 에러가 있으면 user 클래스에서 정의한 validation 에러가 발생-->
     <label>이름</label>
     <input type="text" th:field="*{name}">
+    <span class="error" th:if-="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
     <label>나이</label>
     <input type="number" th:field="*{age}">
     <label>성별</label>
     <input type="checkbox" th:field="*{sex}">
     <label>주소</label>
     <input type="text" th:field="*{address}">
+    <span class="error" th:if-="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
     <input type="submit" value="Submit">
 </form>
 </body>

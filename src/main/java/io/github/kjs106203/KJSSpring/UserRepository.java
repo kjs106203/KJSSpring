@@ -1,6 +1,6 @@
 package io.github.kjs106203.KJSSpring;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.CrudRepository; //DB 접근에 도움을 줌
 
 import java.util.List;
 
